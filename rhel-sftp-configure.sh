@@ -5,7 +5,7 @@
 # What it does: Configure a new RHEL 9 VM as a secure SFTP target
 # with specific users and folder permissions
 # Created by Seth Crosby
-# MIT license
+# GNU license
 
 # Create log file
 LOGFILE="/tmp/sftp-setup.sh.log"

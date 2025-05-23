@@ -33,7 +33,7 @@ Directory Structure
 └── sddc/    # SDDC Manager backups
 
 ### Permissions
-There's a lot of reasons to keep permissions separate between the user who writes backups and the user who would be restoring. Here's how the permissions look once the script has built the services, users, and directories. 
+There's a lot of reasons to keep permissions separate between the user who writes backups and the user who would be restoring. Here's how the permissions look under one folder (vcsa) once the script has built the services, users, and directories and a backup has been sent. 
 
 ![Backup Directory Permissions](./assets/folder-permissions1.png)
 

@@ -32,5 +32,16 @@ Directory Structure
 ├── nsx/     # NSX Manager backups
 └── sddc/    # SDDC Manager backups
 
+### Permissions
+There's a lot of reasons to keep permissions separate between the user who writes backups and the user who would be restoring. Here's how the permissions look once the script has built the services, users, and directories. 
+
+![Backup Directory Permissions](./assets/folder-permissions1.png)
+
 # How to use? 
-update coming... 
+More detail forthcoming, but follow these steps:
+ - Build your host VM. I generally install as minimal/no gui. 
+ - Update pacakges, make sure ssh services are started. 
+ - SCP this script to your host VM. 
+ - Run the script -- it will request an elevated privilege password, and will build the services and directory structure above.
+ - Log into your VMware system (eg. https://vcsa.yourdomain.net:5480 ) and configure the backups to point to the SFTP server you just set up.
+ - Capture backups of that SFTP server on a sensible schedule and with adequate retention.

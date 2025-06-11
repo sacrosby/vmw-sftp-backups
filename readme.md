@@ -1,6 +1,6 @@
 # VMware SFTP Backup Target Configuration
 ## Overview
-This is a set of handy configuration scripts to set up secure SFTP backup targets for VMware infrastructure components (eg. vCenter). The scripts create a security-layered SFTP destination specifically designed to receive backups from VMware and similar products. Scripts are provided for Ubuntu and RHEL at this time.
+This is a set of handy configuration scripts to set up secure SFTP backup targets for VMware infrastructure components (eg. vCenter). Sets up an Ubuntu VM as a dedicated SFTP server with strong security, organized directories, multiple SFTP users (with appropriate permissions), read-only and admin accounts, and a strong baseline of hardening. Scripts are provided for Ubuntu and RHEL at this time.
 ### Why This Solution?
 Critical Broadcom / VMware products generally offer a configuration file backup mechanism and it's the only thing VMware will support. This icludes vCenter Server, SDDC Manager, NSX Manager, and Avi Load Balancer, among others. These all require SFTP targets for backups and the vendor will not officially support snapshot- or image-based VM backup solutions. (vCenter gives options other than SFTP, but I'm preferential to a single backup protocol and destination.)
 ## Traditional approaches often involve:
@@ -13,6 +13,16 @@ Critical Broadcom / VMware products generally offer a configuration file backup 
 - Automated, consistent configuration
 - Proper isolation between different product backup folders with unique users/permissions
 - Centralized backup target that can itself be protected by an enterprise backup solution (Commvault, Veeam, other)
+
+## Security Features:
+- Strong, random passwords for all users.
+- No root or read-only logins over SSH.
+- SFTP-only access for non-admins, chrooted for safety.
+- Admin and read-only accounts for emergency use and restore scenarios.
+- Granular permissions:
+  - SFTP users can access only their designated directories.
+  - Read-only user can read (not modify) all.
+  - Backup Admin can access all.
 
 ## Architecture
 The scripts create a structured SFTP environment with:
